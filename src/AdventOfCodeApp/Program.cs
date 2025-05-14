@@ -33,22 +33,24 @@ internal static class Program
             IsRequired = true
         };
 
+        Option<bool> useSample = new("--sample", "Indicate to use the sample text instead of the input.");
+
         var solveCommand = new Command("solve", "Solve a specific puzzle.")
         {
-            yearOption, dayOption, partOption
+            yearOption, dayOption, partOption, useSample
         };
 
-        solveCommand.SetHandler((int year, int day, int part) => {
+        solveCommand.SetHandler((int year, int day, int part, bool sample) => {
             try {
                 Console.WriteLine($"Running AoC {year}, Day {day}, Part {part}");
                 var solution = SolutionManager.GetSolution(year, day);
-                var input = InputReader.ReadInput(year, day);
+                var input = InputReader.ReadInput(year, day, sample);
                 var result = (part == 1) ? solution.SolvePart1(input) : solution.SolvePart2(input);
                 Console.WriteLine($"AoC {year} Day {day} Part {part}: {result}");
             } catch (Exception ex) {
                 Console.WriteLine($"Error: {ex.Message}");
             }
-        }, yearOption, dayOption, partOption);
+        }, yearOption, dayOption, partOption, useSample);
 
         return solveCommand;
     }
