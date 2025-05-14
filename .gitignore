@@ -1,2 +1,6 @@
-src/AdventOfCodeApp/obj
+**/obj
+**/bin
 src/.idea/
+src/AdventOfCodeApp/Samples/*
+src/AdventOfCodeApp/Inputs/*
+src/AdventOfCodeSolution.sln.DotSettings.user
