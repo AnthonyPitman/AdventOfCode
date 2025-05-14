@@ -18,12 +18,12 @@ internal static class Program
 
     private static Command CreateSolveCommand()
     {
-        Option<int> yearOption = new("--year", "The year of hte puzzle (e.g., 2022).")
+        Option<int> yearOption = new("--year", "The year of the puzzle (e.g., 2022).")
         {
             IsRequired = true
         };
 
-        Option<int> dayOption = new("--day", "The day of hte puzzle (1-25).")
+        Option<int> dayOption = new("--day", "The day of the puzzle (1-25).")
         {
             IsRequired = true
         };
