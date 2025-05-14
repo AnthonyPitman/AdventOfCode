@@ -50,12 +50,12 @@ public static class ScaffoldGenerator
 
                  public class Day{{day}} : IDaySolution
                  {
-                     public string SolvePart1(string input)
+                     public string SolvePart1(string[] input)
                      {
                          return "Not implemented";
                      }
 
-                     public string SolvePart2(string input)
+                     public string SolvePart2(string[] input)
                      {
                          return "Not implemented";
                      }
