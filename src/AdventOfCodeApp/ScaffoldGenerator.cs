@@ -2,20 +2,19 @@
 
 public static class ScaffoldGenerator
 {
-    const string RepoPath = "../../../";
-    const string SolutionPath = $"{RepoPath}./Solutions";
-    const string InputsPath = $"{RepoPath}./Inputs";
-    const string SamplesPath = $"{RepoPath}./Samples";
+    const string SolutionsDirectory = "Solutions";
+    const string InputsDirectory = "Inputs";
+    const string SamplesDirectory = "Samples";
 
     public static void GenerateDayScaffold(int year, int day)
     {
         // Ensure directories exist
-        Directory.CreateDirectory(Path.Combine(SolutionPath, $"{year}"));
-        Directory.CreateDirectory(Path.Combine(InputsPath, $"{year}"));
-        Directory.CreateDirectory(Path.Combine(SamplesPath, $"{year}"));
+        Directory.CreateDirectory(Path.Join("..", "..", "..", SolutionsDirectory, year.ToString()));
+        Directory.CreateDirectory(Path.Join("..", "..", "..", InputsDirectory, year.ToString()));
+        Directory.CreateDirectory(Path.Join("..", "..", "..", SamplesDirectory, year.ToString()));
 
         // Generate solution files
-        var solutionFile = Path.Combine(SolutionPath, year.ToString(), $"Day{day}.cs");
+        var solutionFile = Path.Join("..", "..", "..", SolutionsDirectory, year.ToString(), $"Day{day}.cs");
         if (!File.Exists(solutionFile))
         {
             File.WriteAllText(solutionFile, GetSolutionTemplate(year, day));
@@ -27,8 +26,8 @@ public static class ScaffoldGenerator
         }
 
         // Generate input files.
-        CreateEmptyFileIfNotExists(Path.Combine(InputsPath, $"{year}", $"Day{day}_Input.txt"));
-        CreateEmptyFileIfNotExists(Path.Combine(SamplesPath, $"{year}", $"Day{day}_Sample.txt"));
+        CreateEmptyFileIfNotExists(Path.Join("..", "..", "..", InputsDirectory, year.ToString(), $"Day{day}_Input.txt"));
+        CreateEmptyFileIfNotExists(Path.Join("..", "..", "..", SamplesDirectory, year.ToString(), $"Day{day}_Sample.txt"));
     }
 
     static void CreateEmptyFileIfNotExists(string filePath) {
@@ -42,7 +41,7 @@ public static class ScaffoldGenerator
 
     static string GetSolutionTemplate(int year, int day) {
         return $$"""
-                 namespace AdventOfCodeApp.Solutions.Year{{year}};
+                 namespace AdventOfCodeApp.Solutions._{{year}};
 
                  public class Day{{day}} : IDaySolution
                  {
