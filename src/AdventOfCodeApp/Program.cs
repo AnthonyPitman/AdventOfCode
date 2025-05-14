@@ -16,7 +16,7 @@ internal static class Program
         rootCommand.InvokeAsync(args).Wait();
     }
 
-    private static Command CreateSolveCommand()
+    static Command CreateSolveCommand()
     {
         Option<int> yearOption = new("--year", "The year of the puzzle (e.g., 2022).")
         {
@@ -40,7 +40,7 @@ internal static class Program
             yearOption, dayOption, partOption, useSample
         };
 
-        solveCommand.SetHandler((int year, int day, int part, bool sample) => {
+        solveCommand.SetHandler((year, day, part, sample) => {
             try {
                 Console.WriteLine($"Running AoC {year}, Day {day}, Part {part}");
                 var solution = SolutionManager.GetSolution(year, day);
@@ -55,7 +55,7 @@ internal static class Program
         return solveCommand;
     }
 
-    private static Command CreateScaffoldCommand() {
+    static Command CreateScaffoldCommand() {
         var yearOption = new Option<int>(
                 "--year",
                 "The year to scaffold (e.g., 2024).")
@@ -70,7 +70,7 @@ internal static class Program
             yearOption, dayOption
         };
 
-        scaffoldCommand.SetHandler((int year, int day) => {
+        scaffoldCommand.SetHandler((year, day) => {
             Console.WriteLine($"Scaffolding AoC {year}, Day {day}...");
             ScaffoldGenerator.GenerateDayScaffold(year, day);
             Console.WriteLine("Scaffold generation completed.");
