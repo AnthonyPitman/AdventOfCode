@@ -1,1 +1,1 @@
-Advent of Code Solutions by ShadowGamingB5
+Place for my Advent of Code Solutions
