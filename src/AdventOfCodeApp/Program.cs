@@ -55,7 +55,8 @@ internal static class Program
         return solveCommand;
     }
 
-    static Command CreateScaffoldCommand() {
+    static Command CreateScaffoldCommand()
+    {
         var yearOption = new Option<int>(
                 "--year",
                 "The year to scaffold (e.g., 2024).")

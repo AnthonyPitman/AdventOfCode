@@ -30,16 +30,21 @@ public static class ScaffoldGenerator
         CreateEmptyFileIfNotExists(Path.Join("..", "..", "..", SamplesDirectory, year.ToString(), $"Day{day}_Sample.txt"));
     }
 
-    static void CreateEmptyFileIfNotExists(string filePath) {
-        if (!File.Exists(filePath)) {
+    static void CreateEmptyFileIfNotExists(string filePath)
+    {
+        if (!File.Exists(filePath))
+        {
             File.WriteAllText(filePath, string.Empty);
             Console.WriteLine($"Created: {filePath}");
-        } else {
+        }
+        else
+        {
             Console.WriteLine($"File already exists: {filePath}");
         }
     }
 
-    static string GetSolutionTemplate(int year, int day) {
+    static string GetSolutionTemplate(int year, int day)
+    {
         return $$"""
                  namespace AdventOfCodeApp.Solutions._{{year}};
 
