@@ -8,7 +8,7 @@ public static class SolutionManager
     /// Dynamically retrieves a solution for the specified year and day.
     /// </summary>
     public static IDaySolution GetSolution(int year, int day) {
-        var typeName = $"{SolutionsNamespace}.Year{year}.Day{day}";
+        var typeName = $"{SolutionsNamespace}._{year}.Day{day}";
         var type = Type.GetType(typeName);
 
         if (type == null) {
