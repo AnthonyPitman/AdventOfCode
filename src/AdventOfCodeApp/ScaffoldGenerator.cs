@@ -10,12 +10,12 @@ public static class ScaffoldGenerator
     public static void GenerateDayScaffold(int year, int day)
     {
         // Ensure directories exist
-        Directory.CreateDirectory(Path.Combine(SolutionPath, $"Year{year}"));
+        Directory.CreateDirectory(Path.Combine(SolutionPath, $"{year}"));
         Directory.CreateDirectory(Path.Combine(InputsPath, $"{year}"));
         Directory.CreateDirectory(Path.Combine(SamplesPath, $"{year}"));
 
         // Generate solution files
-        var solutionFile = Path.Combine(SolutionPath, $"Year{year}", $"Day{day}.cs");
+        var solutionFile = Path.Combine(SolutionPath, year.ToString(), $"Day{day}.cs");
         if (!File.Exists(solutionFile))
         {
             File.WriteAllText(solutionFile, GetSolutionTemplate(year, day));
@@ -27,8 +27,8 @@ public static class ScaffoldGenerator
         }
 
         // Generate input files.
-        CreateEmptyFileIfNotExists(Path.Combine(InputsPath, $"{year}", $"{year}_Day{day}_Input.txt"));
-        CreateEmptyFileIfNotExists(Path.Combine(SamplesPath, $"{year}", $"{year}_Day{day}_Sample.txt"));
+        CreateEmptyFileIfNotExists(Path.Combine(InputsPath, $"{year}", $"Day{day}_Input.txt"));
+        CreateEmptyFileIfNotExists(Path.Combine(SamplesPath, $"{year}", $"Day{day}_Sample.txt"));
     }
 
     static void CreateEmptyFileIfNotExists(string filePath) {
