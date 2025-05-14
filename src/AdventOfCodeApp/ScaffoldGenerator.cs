@@ -2,9 +2,10 @@
 
 public static class ScaffoldGenerator
 {
-    const string SolutionPath = "./Solutions";
-    const string InputsPath = "./Inputs";
-    const string SamplesPath = "./Sample";
+    const string RepoPath = "../../../";
+    const string SolutionPath = $"{RepoPath}./Solutions";
+    const string InputsPath = $"{RepoPath}./Inputs";
+    const string SamplesPath = $"{RepoPath}./Samples";
 
     public static void GenerateDayScaffold(int year, int day)
     {
