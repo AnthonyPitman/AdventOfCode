@@ -41,22 +41,22 @@ public static class ScaffoldGenerator
     }
 
     private static string GetSolutionTemplate(int year, int day) {
-        return $@"
-using System;
+        return $$"""
+                 namespace AdventOfCodeApp.Solutions.Year{{year}};
 
-namespace AdventOfCode.Solutions.Year{year} {{
-    public class Day{day} : IDaySolution {{
-        public string SolvePart1(string input) {{
-            // TODO: Implement Part 1
-            return ""Not implemented"";
-        }}
+                 public class Day{{day}} : IDaySolution
+                 {
+                     public string SolvePart1(string input)
+                     {
+                         return "Not implemented";
+                     }
 
-        public string SolvePart2(string input) {{
-            // TODO: Implement Part 2
-            return ""Not implemented"";
-        }}
-    }}
-}}
-";
+                     public string SolvePart2(string input)
+                     {
+                         return "Not implemented";
+                     }
+                 }
+
+                 """;
     }
 }
